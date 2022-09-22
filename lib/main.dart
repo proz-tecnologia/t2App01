@@ -15,6 +15,22 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(
+            fontSize: 16.0,
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.2,
+            fontStyle: FontStyle.normal,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 12.0,
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.2,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
       ),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
