@@ -32,4 +32,8 @@ class Contact {
     this.city,
     this.state,
   });
+
+  String get firstName {
+    return name.split(' ')[0];
+  }
 }

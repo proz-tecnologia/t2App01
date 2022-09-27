@@ -4,6 +4,27 @@ const String photoUrl =
     'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80';
 
 class HomeController {
+  HomeController() {
+    jobTitles = contacts.map((element) => element.jobTitle).toSet();
+    showedContacts = contacts;
+  }
+
+  String currentFilter = '';
+  late List<Contact> showedContacts;
+
+  void showFilteredList(String value) {
+    if (value.isEmpty || value == currentFilter) {
+      currentFilter = '';
+      showedContacts = contacts;
+    } else if (value.isNotEmpty && value != currentFilter) {
+      currentFilter = value;
+      showedContacts =
+          contacts.where((element) => element.jobTitle == value).toList();
+    }
+  }
+
+  late Set<String> jobTitles;
+
   List<Contact> contacts = [
     Contact(
       photoUrl: photoUrl,
