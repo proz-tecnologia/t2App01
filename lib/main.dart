@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'pages/home/home_page.dart';
+import 'package:flutter_app/pages/create_account/create_account_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: HomePage(),
+      home: const CreateAccount(),
     );
   }
 }

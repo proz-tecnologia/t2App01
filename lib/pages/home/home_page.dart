@@ -5,7 +5,7 @@ import 'package:flutter_app/widgets/contact_list_tile.dart';
 import '../../models/contact.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({
+  const HomePage({
     super.key,
   });
 
