@@ -11,7 +11,10 @@ class Validators {
     }
   }
 
-  static String? validatePassword(String? password) {
+  static String? validatePassword(
+    String? password,
+    String? confirmPassword,
+  ) {
     RegExp regex =
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
@@ -24,6 +27,18 @@ class Validators {
     } else if (password.length < 8) {
       return "Senha recisar conter no mínimo 8 digitos";
     }
+    if (confirmPassword != null &&
+        confirmPassword.isNotEmpty &&
+        password != confirmPassword) {
+      return "As senhas precisam ser iguais!";
+    }
     return null;
+  }
+
+  static String? validateName(String? value) {
+    if (value != null && value.isNotEmpty) {
+      return null;
+    }
+    return 'Preencha corretamente o nome';
   }
 }
