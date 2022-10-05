@@ -4,9 +4,11 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     Key? key,
     this.onPressed,
+    this.width,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -32,12 +34,12 @@ class CustomElevatedButton extends StatelessWidget {
             }
             if (states.contains(MaterialState.disabled)) return Colors.grey;
             if (states.contains(MaterialState.pressed)) return Colors.black;
-            return null; // Defer to the widget's default.
+            return null;
           },
         ),
         fixedSize: MaterialStateProperty.all(
           Size(
-            MediaQuery.of(context).size.width * 0.5,
+            width ?? MediaQuery.of(context).size.width * 0.5,
             40,
           ),
         ),
@@ -52,7 +54,7 @@ class CustomElevatedButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: const [
           Icon(Icons.add),
-          Text('Adicionar item'),
+          Text('Cadastrar'),
         ],
       ),
     );

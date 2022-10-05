@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/home/widgets/confirm_create_account_dialog.dart';
 
 import '../../helpers/utils/input_masks.dart';
 import '../../helpers/utils/validators.dart';
@@ -130,124 +131,28 @@ class _CreateAccountState extends State<CreateAccount> {
                     confirmPassword: _passwordController.text,
                   ),
 
-                  ElevatedButton(
-                    onPressed: _formKey.currentState != null &&
-                            _formKey.currentState!.validate()
-                        ? () {
-                            FocusScope.of(context).unfocus();
-                            log(_nameController.value.text);
-                            log(_phoneController.value.text);
-                            log(_mailController.value.text);
-                            log(_cpfController.value.text);
-                            log(_passwordController.value.text);
-                            _nameController.clear();
-                            _phoneController.clear();
-                            _mailController.clear();
-                            _cpfController.clear();
-                            _passwordController.clear();
-                          }
-                        : null,
-                    child: const Text(
-                      'Cadastrar usuário',
-                    ),
-                  ),
-
                   CustomElevatedButton(
-                    onPressed: _formKey.currentState != null &&
-                            _formKey.currentState!.validate()
-                        ? () {
-                            FocusScope.of(context).unfocus();
-                            log(_nameController.value.text);
-                            log(_phoneController.value.text);
-                            log(_mailController.value.text);
-                            log(_cpfController.value.text);
-                            log(_passwordController.value.text);
-                          }
-                        : null,
+                    onPressed: () {
+                      if (_formKey.currentState != null &&
+                          _formKey.currentState!.validate()) {
+                        showDialog(
+                          context: context,
+                          useSafeArea: true,
+                          barrierDismissible: false,
+                          builder: (_) => ConfirmCreateAccountDialog(
+                            name: _nameController.text,
+                            phone: _phoneController.text,
+                            mail: _mailController.text,
+                            cpf: _cpfController.text,
+                          ),
+                        );
+                      }
+                    },
                   ),
-                  CustomElevatedButton(
-                    // onPressed: () => controller.addItem(),
-                    onPressed: () {},
-                  ),
-
-                  GestureDetector(
-                    child: const MaterialChildComponent(),
-                    onTap: () {},
-                    onDoubleTap: () {},
-                    onLongPress: () {},
-                  ),
-                  // InkWell(
-                  //   onTap: () {},
-                  //   borderRadius: BorderRadius.circular(32.0),
-                  //   highlightColor: Colors.orange,
-                  //   splashColor: Colors.orange,
-                  //   child: MaterialChildComponent(),
-                  // ),
-
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.plus_one_outlined),
-                    color: Colors.blue,
-                    hoverColor: Colors.amber,
-                    highlightColor: Colors.orange,
-                  ),
-
-                  /// Confirmação de senha
-                  /// Aceite de termos de uso
-                  /// Botão
                 ],
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class MaterialChildComponent extends StatelessWidget {
-  const MaterialChildComponent({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(32.0),
-      elevation: 2.0,
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.5,
-        height: 40.0,
-        decoration: BoxDecoration(
-          // color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(32.0),
-          gradient: const LinearGradient(
-            colors: [
-              Colors.black,
-              Colors.orange,
-              Colors.black,
-            ],
-            tileMode: TileMode.clamp,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.1, 0.5, 0.9],
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            Text(
-              'Adicionar item',
-              style: Theme.of(context).textTheme.button!.copyWith(
-                    color: Colors.white,
-                  ),
-            ),
-          ],
         ),
       ),
     );
