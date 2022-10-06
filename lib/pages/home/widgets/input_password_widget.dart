@@ -8,10 +8,16 @@ class PasswordTextField extends StatefulWidget {
     Key? key,
     required this.controller,
     required this.confirmPassword,
+    this.onFieldSubmitted,
+    this.focusNode,
+    this.textInputAction,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String confirmPassword;
+  final Function(String)? onFieldSubmitted;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
 
   @override
   State<PasswordTextField> createState() => _PasswordTextFieldState();
@@ -27,7 +33,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return CustomTextFormField(
       label: 'Senha',
       controller: widget.controller,
-      textInputAction: TextInputAction.next,
+      textInputAction: widget.textInputAction ?? TextInputAction.next,
+      focusNode: widget.focusNode,
+      onFieldSubmitted: widget.onFieldSubmitted,
       helperText:
           'Sua senha deve conter, números, letras, caracteres especiais e ter no mínimo, 8 digitos',
       helperMaxLines: 2,

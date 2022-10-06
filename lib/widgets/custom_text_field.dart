@@ -19,6 +19,8 @@ class CustomTextFormField extends StatelessWidget {
   final int? helperMaxLines;
   final Widget? suffix;
   final bool obscureText;
+  final FocusNode? focusNode;
+  final Function(String)? onFieldSubmitted;
   const CustomTextFormField({
     Key? key,
     required this.label,
@@ -38,6 +40,8 @@ class CustomTextFormField extends StatelessWidget {
     this.helperMaxLines,
     this.suffix,
     this.obscureText = false,
+    this.focusNode,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   @override
@@ -55,6 +59,8 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       autovalidateMode: autovalidateMode,
       obscureText: obscureText,
+      onFieldSubmitted: onFieldSubmitted,
+      focusNode: focusNode,
       decoration: InputDecoration(
         hintText: hintText,
         label: Text(label),
