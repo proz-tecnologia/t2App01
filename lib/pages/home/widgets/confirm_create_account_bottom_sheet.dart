@@ -9,12 +9,14 @@ class ConfirmCreateAccountBottomSheet extends StatelessWidget {
     required this.phone,
     required this.mail,
     required this.cpf,
+    required this.onConfirm,
   });
 
   final String name;
   final String phone;
   final String mail;
   final String cpf;
+  final VoidCallback onConfirm;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,7 @@ class ConfirmCreateAccountBottomSheet extends StatelessWidget {
                     Navigator.pop(context);
 
                     ///Adicionando o componente de loading
-                    showDialog(
+                    /* showDialog(
                       context: context,
                       barrierDismissible: false,
                       builder: (context) => WillPopScope(
@@ -127,7 +129,8 @@ class ConfirmCreateAccountBottomSheet extends StatelessWidget {
                           ),
                         ),
                       ),
-                    );
+                    );*/
+                    onConfirm();
                   },
                   width: MediaQuery.of(context).size.height * 0.2,
                 ),

@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
                 setState(() {
                   controller.showFilteredList(value);
                 });
+                Navigator.named
               },
             );
           }
@@ -70,6 +71,12 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+class ScreenArguments {
+  final int name;
+  final int parameters;
+
+  ScreenArguments({required this.name, required this.parameters,});
+}
 class FirstContactListTile extends StatelessWidget {
   const FirstContactListTile({
     Key? key,
@@ -88,6 +95,8 @@ class FirstContactListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+
     return Column(
       children: [
         Wrap(
